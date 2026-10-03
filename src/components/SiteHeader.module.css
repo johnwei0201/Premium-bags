@@ -1,0 +1,326 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* 左、中、右三欄，Logo 永遠置中 */
+  align-items: center;
+  padding: 32px 60px;
+  color: var(--color-white);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+/* 內頁：深咖啡底色；底下的留白收一點（Logo 位置不變），下面的內容才能往上移 */
+.header--solid {
+  padding-bottom: 16px;
+  background: var(--color-black);
+}
+
+/* 第 1 屏時：淡出並往上藏起來 */
+.header--hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav--right {
+  justify-content: flex-end;
+}
+
+/* 英文、中文疊在同一格，寬度取兩者較寬的，換字時選單不會左右跳動 */
+.nav-link {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+}
+
+/* 滑過時才出現在下方的小字，例如「(僅限會員)」
+   用絕對定位浮在下面，不會把導覽列撐高或推動旁邊的選單 */
+.nav-link-note {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -4px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+.nav-link:hover .nav-link-note,
+.nav-link:focus-visible .nav-link-note {
+  opacity: 0.85;
+  transform: translate(-50%, 0);
+}
+
+.nav-link-en,
+.nav-link-zh {
+  grid-area: 1 / 1;
+  transition: opacity 0.3s;
+}
+
+/* 平常：英文，小而精緻、字距拉開 */
+.nav-link-en {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+}
+
+/* 滑鼠移上去：換成中文，字較小、加底線 */
+.nav-link-zh {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  opacity: 0;
+}
+
+.nav-link:hover .nav-link-en,
+.nav-link:focus-visible .nav-link-en {
+  opacity: 0;
+}
+
+.nav-link:hover .nav-link-zh,
+.nav-link:focus-visible .nav-link-zh {
+  opacity: 1;
+}
+
+.social-link:hover {
+  opacity: 0.6;
+}
+
+/* Logo：固定高度，寬度照圖片比例（約 3:1）自動算 */
+.logo {
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo-img {
+  height: 56px;
+  width: auto;
+}
+
+.social {
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.3s;
+}
+
+/* ☰ 按鈕：桌機、平板不顯示 */
+.menu-toggle {
+  display: none;
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- 手機全螢幕選單 ---------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 選單靠上（原本是置中），一打開就在眼前 */
+  padding: 104px 32px 80px;
+  overflow-y: auto;
+  background: var(--color-secondary);
+  color: var(--color-accent);
+}
+
+/* 回上一頁：選單下方靠右 */
+.menu-back {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 8px 0;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  opacity: 0.75;
+  transition: opacity 0.3s;
+}
+
+.menu-back:hover,
+.menu-back:focus-visible {
+  opacity: 1;
+}
+
+.menu-back-arrow {
+  font-size: 16px;
+  letter-spacing: 0;
+  transition: transform 0.3s;
+}
+
+.menu-back:hover .menu-back-arrow {
+  transform: translateX(-4px);
+}
+
+.menu-close {
+  position: absolute;
+  top: 26px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgb(243 238 186 / 0.2);
+}
+
+.mobile-menu-link:first-child {
+  border-top: 1px solid rgb(243 238 186 / 0.2);
+}
+
+.mobile-menu-zh {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+.mobile-menu-en {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+/* 打開 / 關閉：淡入淡出（平常透明，加上 --shown 才看得到） */
+.mobile-menu {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mobile-menu--shown {
+  opacity: 1;
+}
+
+/* 小桌機（1200～1439px）：左邊有 5 個連結，間距和字距收一點，才不會擠到 Logo */
+@media (max-width: 1439px) {
+  .nav {
+    gap: 24px;
+  }
+
+  .nav-link-en {
+    letter-spacing: 0.2em;
+  }
+}
+
+/* 1199px 以下（小筆電、平板、手機）：左邊 5 個連結放不下，收進 ☰ 選單 */
+@media (max-width: 1199px) {
+  .nav--left {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* 平板：稍微縮小 */
+@media (max-width: 1023px) {
+  .header {
+    padding: 24px 32px;
+  }
+
+  .header--solid {
+    padding-bottom: 12px;
+  }
+
+  .nav {
+    gap: 18px;
+  }
+
+  .nav-link-en {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-link-zh {
+    font-size: 10px;
+  }
+
+  .logo-img {
+    height: 44px;
+  }
+
+  .social {
+    gap: 12px;
+  }
+}
+
+/* 手機：再縮小
+   手機太窄，左右選單寬度不一樣，Logo 改成「放在左右選單中間的空位置中央」，並保留間距不黏在一起 */
+@media (max-width: 767px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    column-gap: 12px;
+    padding: 20px 16px;
+  }
+
+  .header--solid {
+    padding-bottom: 10px;
+  }
+
+  .logo {
+    justify-self: center;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .nav-link-en {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-link-zh {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .logo-img {
+    height: 36px;
+  }
+
+  .social {
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 15px;
+    height: 15px;
+  }
+}

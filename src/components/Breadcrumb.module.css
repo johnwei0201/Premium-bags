@@ -1,0 +1,47 @@
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+/* 每一層之間的斜線 */
+.breadcrumb li + li::before {
+  content: '/';
+  margin: 0 12px;
+  opacity: 0.4;
+}
+
+.breadcrumb a {
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.breadcrumb a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* 目前這一頁：比較亮，不能點 */
+.breadcrumb [aria-current='page'] {
+  opacity: 0.9;
+}
+
+/* 手機 */
+@media (max-width: 767px) {
+  .breadcrumb ol {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .breadcrumb li + li::before {
+    margin: 0 8px;
+  }
+}

@@ -1,0 +1,49 @@
+.back {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+}
+
+.back-arrow {
+  width: 16px;
+  font-size: 16px;
+  letter-spacing: 0;
+  transition: transform 0.3s;
+}
+
+.back-en,
+.back-zh {
+  transition: opacity 0.3s;
+}
+
+/* 中文疊在英文的位置上（箭頭 16px + 間距 10px 之後），平常看不到 */
+.back-zh {
+  position: absolute;
+  left: 26px;
+  opacity: 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.back:hover .back-arrow,
+.back:focus-visible .back-arrow {
+  transform: translateX(-4px); /* 箭頭往左輕推，提示「往回走」 */
+}
+
+.back:hover .back-en,
+.back:focus-visible .back-en {
+  opacity: 0;
+}
+
+.back:hover .back-zh,
+.back:focus-visible .back-zh {
+  opacity: 1;
+}

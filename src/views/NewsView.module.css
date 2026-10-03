@@ -1,0 +1,107 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-secondary);
+  color: var(--color-accent);
+}
+
+.list {
+  padding: 0 60px 140px;
+}
+
+/* 一則一列：照片固定寬，文字佔剩下空間 */
+.post {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid rgb(243 238 186 / 0.2);
+}
+
+.post:first-child {
+  padding-top: 0;
+}
+
+.post-photo {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.post-photo > * {
+  transition: transform 0.8s ease;
+}
+
+.post:hover .post-photo > * {
+  transform: scale(1.03);
+}
+
+.post-meta {
+  margin-bottom: 14px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  opacity: 0.6;
+}
+
+.post-dot {
+  margin: 0 4px;
+}
+
+.post-title {
+  margin-bottom: 16px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.post-excerpt {
+  max-width: 560px;
+  font-size: 13px;
+  line-height: 2;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+/* 平板：照片縮小 */
+@media (max-width: 1023px) {
+  .list {
+    padding: 0 32px 112px;
+  }
+
+  .post {
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+  }
+
+  .post-title {
+    font-size: 19px;
+  }
+}
+
+/* 手機：照片在上、文字在下 */
+@media (max-width: 767px) {
+  .list {
+    padding: 0 16px 80px;
+  }
+
+  .post {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 0;
+  }
+
+  .post-meta {
+    margin-bottom: 8px;
+  }
+
+  .post-title {
+    margin-bottom: 10px;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+  }
+
+  .post-excerpt {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+}

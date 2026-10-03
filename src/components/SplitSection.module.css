@@ -1,0 +1,46 @@
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.split-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+/* 照片填滿半邊畫面，多出來的裁掉，不會變形 */
+.split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+/* 上方加一層淡淡的深色漸層，白色導覽列文字疊在淺色照片上才看得清楚 */
+.split-link::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 180px;
+  background: linear-gradient(rgb(29 12 7 / 0.45), transparent);
+  pointer-events: none;
+}
+
+/* 滑鼠移上去：照片微微放大，提示可以點 */
+.split-link:hover .split-img {
+  transform: scale(1.03);
+}
+
+/* 平板、桌機維持左右對半；手機才改成上下排 */
+@media (max-width: 767px) {
+  .split {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  /* 手機下半張照片上面沒有導覽列，不用漸層 */
+  .split-link + .split-link::after {
+    display: none;
+  }
+}

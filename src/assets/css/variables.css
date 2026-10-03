@@ -1,0 +1,43 @@
+/* =========================================
+   品牌色彩變數（整個網站共用的顏色都放這裡）
+   用法：color: var(--color-primary);
+   ========================================= */
+
+:root {
+  /* 主色系：深墨綠（圖一） */
+  --color-primary: #084728;
+  --color-primary-light: #0f6b3e; /* hover、亮一點的狀態 */
+  --color-primary-dark: #053219;  /* 按下去、深一點的狀態 */
+
+  /* 輔助色：深咖啡（圖二） */
+  --color-secondary: #1d0c07;
+  --color-secondary-light: #3a1e14;
+
+  /* 次要輔助色：奶油米黃（圖三） */
+  --color-accent: #f3eeba;
+  --color-accent-light: #f9f6dc;
+  --color-accent-dark: #e6de96;
+
+  /* 常用搭配 */
+  --color-white: #ffffff;
+  --color-black: #000000;                      /* 內頁導覽列底色 */
+  --color-text: var(--color-secondary);        /* 內文文字：深咖啡 */
+  --color-text-inverse: var(--color-accent);   /* 深色底上的文字：米黃 */
+  --color-bg: var(--color-accent-light);       /* 網頁底色：淡米黃 */
+}
+
+/* =========================================
+   字體變數
+   ========================================= */
+:root {
+  --font-serif: "Noto Serif TC", "PMingLiU", serif;              /* 優雅：大標題 */
+  --font-sans: "Noto Sans TC", "Microsoft JhengHei", sans-serif; /* 俐落：選單、小字 */
+}
+
+/* =========================================
+   RWD 三個尺寸（@media 不能用 CSS 變數，所以數字記在這裡，各元件照抄）
+   - 桌機：1024px 以上 → 預設樣式，不用寫 @media
+   - 平板：768px～1023px → @media (max-width: 1023px)
+   - 手機：767px 以下 → @media (max-width: 767px)
+   平板的規則寫在前面、手機寫在後面，手機會蓋掉平板
+   ========================================= */

@@ -1,0 +1,58 @@
+.final {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 照片區：佔掉頁尾以外的全部高度 */
+.final-photo {
+  position: relative;
+  flex: 1;
+}
+
+.final-caption {
+  position: absolute;
+  left: 60px;
+  bottom: 60px;
+  display: flex;
+  align-items: baseline;
+  gap: 200px;
+  color: var(--color-white);
+}
+
+.final-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.final-title {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+}
+
+/* 平板 */
+@media (max-width: 1023px) {
+  .final-caption {
+    left: 32px;
+    bottom: 40px;
+    gap: 80px;
+  }
+
+  .final-title {
+    font-size: 26px;
+  }
+}
+
+/* 手機 */
+@media (max-width: 767px) {
+  .final-caption {
+    left: 16px;
+    bottom: 24px;
+    gap: 32px;
+  }
+
+  .final-title {
+    font-size: 22px;
+  }
+}

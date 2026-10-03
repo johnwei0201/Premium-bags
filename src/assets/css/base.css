@@ -1,0 +1,28 @@
+/* =========================================
+   全站基本設定
+   ========================================= */
+
+/* 彈窗打開時：鎖住背景，不能捲動 */
+html.no-scroll {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-secondary);
+}
+
+/* 每一屏共用：剛好是首頁那個框的高度（= 一個畫面高），而且是「吸附點」
+   一屏一屏吸附的設定在 HomeView.vue 的 .home */
+.screen {
+  position: relative;
+  height: 100%;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* 點一下就換到下一屏：游標變手指提示「可以點」（最後一屏沒有下一屏，所以不加） */
+.screen:not(:last-child) {
+  cursor: pointer;
+}

@@ -1,0 +1,99 @@
+/* =========================================
+   CSS Reset（清除瀏覽器預設樣式）
+   ========================================= */
+
+/* 1. 所有元素改用 border-box：寬高會包含 padding 與 border，比較好算 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. 清掉所有元素預設的外距與內距 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. 網頁基本設定 */
+html {
+  -webkit-text-size-adjust: 100%; /* 防止手機橫放時字體自動放大 */
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; /* 字體更平滑 */
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* 4. 圖片、影片等多媒體：變成區塊元素，且不會超出父層 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. 表單元素繼承字體（瀏覽器預設不會繼承） */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* 6. 按鈕：移除預設外框與背景，滑鼠變手指 */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 7. 清單：移除前面的圓點與數字 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 8. 連結：移除底線、顏色跟著父層 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 9. 標題：字體大小與粗細先歸零，之後再自己定義 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* 10. 長文字自動斷行，避免撐破版面 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 11. 表格：邊框合併、間距歸零 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 12. 讓 #root（React 掛載點）建立獨立的堆疊層，避免 z-index 互相干擾 */
+#root {
+  isolation: isolate;
+}

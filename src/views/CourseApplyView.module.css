@@ -1,0 +1,411 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-secondary);
+  color: var(--color-accent);
+}
+
+.apply-page {
+  padding: 160px 60px 140px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 40px;
+}
+
+/* 左課程、右表單 */
+.apply-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ---------- 左：課程摘要 ---------- */
+.course {
+  position: sticky;
+  top: 140px; /* 停在導覽列下方 */
+}
+
+.course-photo {
+  aspect-ratio: 4 / 3;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.course-category {
+  margin-bottom: 8px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  opacity: 0.7;
+}
+
+.course-name {
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+/* 開課日期：課程名稱下方一行小字 */
+.course-date {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.course-date-label {
+  opacity: 0.6;
+}
+
+.course-info {
+  border-top: 1px solid rgb(243 238 186 / 0.2);
+}
+
+.course-info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgb(243 238 186 / 0.2);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.course-info-row dt {
+  opacity: 0.6;
+}
+
+/* ---------- 右：表單 ---------- */
+.form-label {
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  opacity: 0.7;
+}
+
+.form-title {
+  margin-bottom: 32px;
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-hint {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.req {
+  margin-left: 2px;
+  color: #e6a57e; /* 淡橘，提示必填 */
+}
+
+/* 兩欄並排（手機會變一欄） */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  border: none;
+}
+
+.field-label {
+  padding: 0;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  opacity: 0.8;
+}
+
+/* 輸入框：跟會員彈窗一樣只有底線 */
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid rgb(243 238 186 / 0.4);
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.8;
+}
+
+.field select option {
+  background: var(--color-secondary);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgb(243 238 186 / 0.35);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+/* 使用者填過、但格式不對時：底線變淡橘提醒 */
+.field input:user-invalid {
+  border-bottom-color: #e6a57e;
+}
+
+/* 單選：做成小膠囊按鈕 */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  position: relative;
+}
+
+/* 真正的圓形選項藏起來（還是可以用鍵盤操作），用外框當作選項 */
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgb(243 238 186 / 0.35);
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.chip:hover span {
+  border-color: var(--color-accent);
+}
+
+.chip input:checked + span {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.chip input:focus-visible + span {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* 同意勾選 */
+.agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.agree input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  accent-color: var(--color-accent);
+}
+
+/* 送出按鈕：跟「報名」按鈕同一套（細框、稍微圓角、滑過反白） */
+.submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 40px;
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: var(--color-secondary);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  transition: background 0.3s, color 0.3s;
+}
+
+.submit:hover,
+.submit:focus-visible {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.submit-arrow {
+  transition: transform 0.3s;
+}
+
+.submit:hover .submit-arrow {
+  transform: translateX(3px);
+}
+
+/* 次要按鈕：只有框線 */
+.submit--ghost {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.submit--ghost:hover,
+.submit--ghost:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+/* ---------- 送出後的確認畫面 ---------- */
+.done-text {
+  margin-bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.done-list {
+  border-top: 1px solid rgb(243 238 186 / 0.2);
+}
+
+.done-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgb(243 238 186 / 0.2);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.done-row dt {
+  opacity: 0.6;
+}
+
+.done-row dd {
+  overflow-wrap: anywhere;
+}
+
+.done-notice {
+  margin: 28px 0 32px;
+  padding: 16px 20px;
+  border: 1px solid rgb(230 165 126 / 0.6);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+}
+
+.done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- 平板：左欄窄一點 ---------- */
+@media (max-width: 1023px) {
+  .apply-page {
+    padding: 132px 32px 112px;
+  }
+
+  .apply-grid {
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+  }
+
+  .course {
+    top: 116px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 手機：課程在上、表單在下 ---------- */
+@media (max-width: 767px) {
+  .apply-page {
+    padding: 100px 16px 80px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .apply-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* 手機上課程摘要改成左圖右文的小卡，不佔太多位置 */
+  .course {
+    position: static;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  .course-photo {
+    grid-row: span 4; /* 右邊有 4 行：分類、名稱、開課日期、時數表格 */
+    margin-bottom: 0;
+  }
+
+  .course-name {
+    margin-bottom: 8px;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+  }
+
+  .course-info-row {
+    padding: 6px 0;
+    font-size: 12px;
+  }
+
+  .form {
+    gap: 28px;
+  }
+
+  .submit {
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  .done-actions > * {
+    flex: 1;
+    justify-content: center;
+  }
+}

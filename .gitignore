@@ -1,0 +1,10 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# 只留在本機、不上傳到公開 repo 的圖片
+# Logo 原檔（網站用的是縮小版 logo-web.png）
+src/images/set/陳文遠精品包_logo.png
+# .jfif 原檔（網站用的是 .jpg）
+*.jfif

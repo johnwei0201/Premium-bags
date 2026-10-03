@@ -1,0 +1,8 @@
+/* 固定大小的框：剛好蓋滿畫面，裡面一屏一屏吸附 */
+.home {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain; /* 滑到頭尾時不要把捲動「傳」給外面的網頁，避免回彈打架 */
+}

@@ -1,0 +1,56 @@
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 56px 60px;
+  background: var(--color-primary); /* 主色：深墨綠 */
+  color: var(--color-white);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+.footer-columns {
+  display: flex;
+  gap: 120px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-link:hover {
+  opacity: 0.6;
+}
+
+/* 平板：縮小間距 */
+@media (max-width: 1023px) {
+  .footer {
+    padding: 40px 32px;
+    font-size: 13px;
+  }
+
+  .footer-columns {
+    gap: 56px;
+  }
+}
+
+/* 手機：再縮小，版權換到下一行 */
+@media (max-width: 767px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 16px;
+    font-size: 12px;
+  }
+
+  .footer-columns {
+    gap: 32px;
+  }
+
+  .footer-column {
+    gap: 10px;
+  }
+}

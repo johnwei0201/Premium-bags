@@ -1,0 +1,40 @@
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-accent);
+}
+
+.placeholder--dark {
+  background: var(--color-secondary-light);
+}
+
+.placeholder--light {
+  background: #5a3a2c;
+}
+
+.placeholder-text {
+  font-size: 20px;
+  letter-spacing: 0.3em;
+}
+
+.placeholder-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+/* 手機：縮小字 */
+@media (max-width: 767px) {
+  .placeholder-text {
+    font-size: 16px;
+  }
+
+  .placeholder-label {
+    font-size: 11px;
+  }
+}
